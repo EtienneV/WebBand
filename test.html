@@ -1,0 +1,163 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link href="css/starter-template.css" rel="stylesheet">
+
+    <script type="text/javascript" src="js/buffer-loader.js"></script>
+
+    <script type="text/javascript" src="js/BinFileReader.js"></script>
+    <script type="text/javascript" src="js/pcmdata.js"></script>
+
+    <script type="text/javascript" src="js/SeamlessLoop.js"></script>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+
+  <body ng-controller="Afficheur">
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WebBand</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Sources</a></li>
+            
+          </ul>
+          
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div class="progresstime"></div>
+
+    <div class="container">
+
+      <div class="cadre">
+
+      <div class="row container-pad">
+        <div class="col-md-2 col-pad">
+          <div class="row">
+            <img src="img/riff.jpg" class="pad riff" ng-click="data.clicOnOff(11)" style="{{data.css_brightness(11)}}">
+          </div>
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo_p1" ng-click="data.clicOnOff(13)" style="{{data.css_brightness(13)}}">
+          </div>
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo_p2" ng-click="data.clicOnOff(14)" style="{{data.css_brightness(14)}}">
+          </div>
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo_p3" ng-click="data.clicOnOff(15)" style="{{data.css_brightness(15)}}">
+          </div>
+        </div>
+        <div class="col-md-2 col-pad">
+          <div class="row">
+            <img src="img/batterie.jpeg" class="pad batterie1" ng-click="data.clicOnOff(16)" style="{{data.css_brightness(16)}}">
+          </div>
+          <div class="row">
+            <img src="img/batterie.jpeg" class="pad batterie2" ng-click="data.clicOnOff(0)" style="{{data.css_brightness(0)}}">
+          </div>
+          <div class="row">
+            <img src="img/batterie.jpeg" class="pad batterie4" ng-click="data.clicOnOff(1)" style="{{data.css_brightness(1)}}">
+          </div>
+          <div class="row">
+            <img src="img/batterie.jpeg" class="pad batterie5" ng-click="data.clicOnOff(3)" style="{{data.css_brightness(3)}}">
+          </div>
+        </div>
+        <div class="col-md-2 col-pad">
+          <div class="row">
+            <img src="img/accomp.jpg" class="pad accomp" ng-click="data.clicOnOff(5)" style="{{data.css_brightness(5)}}">
+          </div>
+          <div class="row">
+            <img src="img/guit_elec.jpg" class="pad guit_elec" ng-click="data.clicOnOff(6)" style="{{data.css_brightness(6)}}">
+          </div>
+          <div class="row">
+            <img src="img/violon.jpg" class="pad violon" ng-click="data.clicOnOff(17)" style="{{data.css_brightness(17)}}">
+          </div>
+           <div class="row">
+            <img src="img/accomp.jpg" class="pad accomp" ng-click="data.clicOnOff(18)" style="{{data.css_brightness(18)}}">
+          </div>
+        </div>
+        <div class="col-md-2 col-pad">
+          <div class="row">
+            <img src="img/basse.jpg" class="pad basse" ng-click="data.clicOnOff(7)" style="{{data.css_brightness(7)}}">
+          </div>
+          <div class="row">
+            <img src="img/basse.jpg" class="pad basse" ng-click="data.clicOnOff(19)" style="{{data.css_brightness(19)}}">
+          </div>
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo1" ng-click="data.clicOnOff(9)" style="{{data.css_brightness(9)}}">
+          </div>
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo2" ng-click="data.clicOnOff(10)" style="{{data.css_brightness(10)}}">
+          </div>
+        </div>
+        <div class="col-md-2 col-pad">
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo1" ng-click="data.clicOnOff(20)" style="{{data.css_brightness(20)}}">
+          </div>
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo2" ng-click="data.clicOnOff(21)" style="{{data.css_brightness(21)}}">
+          </div>
+          <div class="row">
+            <img src="img/solo.jpg" class="pad solo1" ng-click="data.clicOnOff(22)" style="{{data.css_brightness(22)}}">
+          </div>
+          <div class="row">
+            <img src="img/auto.jpg" class="pad assiste" ng-click="data.clic_mode_assiste()" style="{{data.css_brightness_mode_assiste()}}">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="download" ><a href="audio/Morceau_Etienne.mp3" download="Morceau_Etienne"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Télécharger le morceau</a></p>
+
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" data-keyboard="false">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Arrange le morceau à ta sauce !</h4>
+          </div>
+          <div class="modal-body">
+
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                <span class="sr-only">60% Complete</span>
+              </div>
+            </div>
+
+            <br>
+            <p>Clique sur les instruments pour les ajouter ou les retirer du mix !</p>
+            <p>Astuce : le Mode Auto permet de synchroniser tous les changements ;)</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary {{data.buttonDisabled}}" ng-click="data.clickStartBand()">C'est parti !</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      
+    </script>
+  </body>
+</html>
